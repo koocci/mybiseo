@@ -1,0 +1,3 @@
+2017-09-27 17:44:17,702:INFO: Initializing tf session
+2017-09-27 17:44:19,452:INFO: Reloading the latest trained model...
+2017-09-27 17:44:19,452:INFO: Restoring parameters from results/test/model.weights/
