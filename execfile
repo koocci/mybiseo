@@ -1,4 +1,5 @@
 #!/bin/bash
 
 pip install -r requirements.txt
-python manage.py runserver $1
+python manage.py runserver 164.125.68.177 80 
+

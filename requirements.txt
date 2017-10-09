@@ -4,6 +4,7 @@ bz2file==0.98
 certifi==2017.7.27.1
 chardet==3.0.4
 Django==1.11.4
+ez-setup==0.9
 gensim==2.3.0
 gunicorn==19.7.1
 html5lib==0.9999999
