@@ -2,29 +2,9 @@ from konlpy.tag import Twitter
 from gensim.models import Word2Vec
 import classification.makeMatrix as makeMatrix
 
-'''
-
-    {
-        weather: {
-            intent: [find]
-        },
-        music: {
-            intent: [play, find]
-        },
-        memo: {
-            intent: [insert]
-        },
-        alarm: {
-            intent: [send]
-        }
-    }
-
-
-'''
-
 class intentClassification:
     def __init__(self):
-        self.types = ['날씨', '음악', '메모', '알람']
+        self.types = ['날씨', '음악', '메모', '메시지']
         self.intentObj = {}
 
     # 문장 intent 도출
@@ -66,18 +46,18 @@ class intentClassification:
             return intentWord
 
     def getTypeIntentFiles(self, type):
-        weatherDataSet = ['classification//dict/weatherData/intent/find.txt']
-        musicDataSet = ['classification//dict/musicData/intent/find.txt', 'classification/dict/musicData/intent/play.txt']
-        memoDataSet = ['classification//dict/memoData/intent/insert.txt']
-        alarmDataSet = ['classification//dict/alarmData/intent/send.txt']
+        weatherDataSet = ['classification/dict/weatherData/intent/find.txt']
+        musicDataSet = ['classification/dict/musicData/intent/find.txt', 'classification/dict/musicData/intent/play.txt', 'classification/dict/musicData/intent/off.txt']
+        memoDataSet = ['classification/dict/memoData/intent/insert.txt']
+        messageDataSet = ['classification/dict/messageData/intent/send.txt']
         if type == '날씨':
             return weatherDataSet, ['find']
         elif type == '음악':
-            return musicDataSet, ['find', 'play']
+            return musicDataSet, ['find', 'play', 'off']
         elif type == '메모':
             return memoDataSet, ['insert']
-        else: # 알람
-            return alarmDataSet, ['send']
+        else: # 메세지
+            return messageDataSet, ['send']
 
     def learning(self):
         # 모든 타입 학습

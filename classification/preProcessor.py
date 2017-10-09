@@ -19,8 +19,8 @@ def preProcessor():
     return typeClassTest, intentClassTest, paramsClassTest
 
 def locData():
-    readFilePath = 'classification./dict/weatherData/locDic/address.txt'
-    writeFilePath = 'classification./dict/weatherData/params/find/address.txt'
+    readFilePath = 'classification/dict/weatherData/locDic/address.txt'
+    writeFilePath = 'classification/dict/weatherData/params/find/address.txt'
     addArr = []
     with open(readFilePath, 'r') as rf:
         for line in rf:
@@ -56,7 +56,7 @@ def makeWeatherTag():
     additionals = []
 
     # with open('./dict/weatherData/params/find/date.txt', 'r') as rdf:
-    with open('classification./dict/weatherData/params/find/test_date.txt', 'r') as rdf:
+    with open('classification/dict/weatherData/params/find/test_date.txt', 'r') as rdf:
         for line in rdf:
             tmpArr = []
             for idx, word in enumerate(line.split(' ')):
@@ -67,7 +67,7 @@ def makeWeatherTag():
                     tmpArr.append(word + ' I-DTE')
             dates.append('\n'.join(tmpArr))
     # with open('./dict/weatherData/params/find/address.txt', 'r') as raf:
-    with open('classification./dict/weatherData/params/find/test_address.txt', 'r') as raf:
+    with open('classification/dict/weatherData/params/find/test_address.txt', 'r') as raf:
         for line in raf:
             tmpArr = []
             for idx, word in enumerate(line.split(' ')):
@@ -78,14 +78,14 @@ def makeWeatherTag():
                     tmpArr.append(word + ' I-LOC')
             addresses.append('\n'.join(tmpArr))
 
-    with open('classification./dict/weatherData/params/find/weatherData.txt', 'r') as rf:
+    with open('classification/dict/weatherData/params/find/weatherData.txt', 'r') as rf:
         for line in rf:
             words = paramTokenize(line)
             tmpArr = []
             for word in words:
                 tmpArr.append(word[0] + ' O')
             additionals.append('\n'.join(tmpArr))
-    with open('classification./dict/weatherData/params/find/taggingData.txt', 'w') as wf:
+    with open('classification/dict/weatherData/params/find/taggingData.txt', 'w') as wf:
         for date in dates:
             if date != '':
                 date = date + '\n'

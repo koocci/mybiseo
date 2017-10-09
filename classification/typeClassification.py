@@ -5,7 +5,7 @@ import classification.makeMatrix as makeMatrix
 
 class typeClassification:
     def __init__(self):
-        self.queries = ['날씨/Noun', '음악/Noun', '메모/Noun', '알람/Noun']
+        self.queries = ['날씨/Noun', '음악/Noun', '재생/Noun', '메모/Noun', '메시지/Noun', '메세지/Noun']
         self.weightMat = 0
         self.sentences = []
         self.w2vModel = 0
@@ -82,14 +82,13 @@ class typeClassification:
 
     def learning(self, filePath):
 
-        # # 새롭게 할 시
-        # self.sentences = self.readDataFiles(filePath)
-        #
-        # self.w2vModel = Word2Vec(self.sentences, size=100, window=4, min_count=1, workers=4, iter=300, sg=1)
-        # self.w2vModel.save('w2vTypeModel')
+        # 새롭게 할 시
+        self.sentences = self.readDataFiles(filePath)
+        self.w2vModel = Word2Vec(self.sentences, size=100, window=4, min_count=1, workers=4, iter=300, sg=1)
+        self.w2vModel.save('w2vTypeModel')
 
         # 저장되어 있을 시
-        self.w2vModel = Word2Vec.load('classification/w2vTypeModel')
+        # self.w2vModel = Word2Vec.load('./w2vTypeModel')
 
         # 거리 행렬, query index
         distMat, queriesIdx, self.queries = makeMatrix.getDistMat(self.w2vModel, self.queries)

@@ -25,20 +25,15 @@ class paramClassification:
         self.config = Config()
         self.model = NERModel(self.config)
         self.model.build()
-        self.model.restore_session(self.config.dir_model)
+
         # # create dataset
         # test = CoNLLDataset(self.config.filename_test, self.config.processing_word,
         #                     self.config.processing_tag, self.config.max_iter)
         # # evaluate and interact
         # self.model.evaluate(test)
     def predict(self, sentence):
-
+        self.model.restore_session(self.config.dir_model)
         words_raw = sentence.strip().split(" ")
         preds = self.model.predict(words_raw)
-        return words_raw, preds
 
-    def testing(self, sentence):
-
-        words_raw = sentence.strip().split(" ")
-        preds = self.model.predict(words_raw)
         return words_raw, preds
